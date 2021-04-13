@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "ZodiacService";
+
+package zodiac;
+
+import "google/protobuf/timestamp.proto";
+
+service Zodiac {
+  rpc FindZodiac (ZodiacRequest) returns (ZodiacReply);
+}
+
+message ZodiacRequest {
+  google.protobuf.Timestamp zodiacDate = 1;
+}
+
+message ZodiacReply {
+  string zodiacName = 1;
+}
