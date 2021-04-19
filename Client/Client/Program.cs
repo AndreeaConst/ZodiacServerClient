@@ -1,4 +1,5 @@
-﻿using Grpc.Net.Client;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Net.Client;
 using System;
 using System.Threading.Tasks;
 using ZodiacClient;
@@ -22,8 +23,13 @@ namespace Client
 
                 if (DateTime.TryParse(dateString, out date))
                 {
-                    //Console.WriteLine(date.ToShortDateString());
-                    Console.WriteLine("Correct!");
+                    //Console.WriteLine("Correct!");
+                    var zodiacToBeFound = new ClientZodiac()
+                    {
+                        ZodiacDate = Timestamp.FromDateTimeOffset(date)
+                    };
+                    var response = await client.FindZodiacAsync(new ZodiacRequest { Zodiac = zodiacToBeFound });
+                    Console.WriteLine("Your zodiac is: " + response.ZodiacName);
                 }
                 else
                 {
