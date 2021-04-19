@@ -11,10 +11,10 @@ service Zodiac {
 }
 
 message ZodiacRequest {
-	ZodiacDate zodiac = 1;
+	ClientZodiac zodiac = 1;
 }
 
-message ZodiacDate{
+message ClientZodiac{
 	google.protobuf.Timestamp zodiacDate = 1;
 }
 
