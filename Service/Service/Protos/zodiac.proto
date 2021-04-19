@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "ZodiacService";
+option csharp_namespace = "ZodiacServer";
 
 package zodiac;
 
@@ -11,7 +11,11 @@ service Zodiac {
 }
 
 message ZodiacRequest {
-  google.protobuf.Timestamp zodiacDate = 1;
+	ZodiacDate zodiac = 1;
+}
+
+message ZodiacDate{
+	google.protobuf.Timestamp zodiacDate = 1;
 }
 
 message ZodiacReply {
