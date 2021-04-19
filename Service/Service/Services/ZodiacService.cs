@@ -23,7 +23,7 @@ namespace ZodiacService
             var zodiac = request.Zodiac;
             string zodiacName = zodiacOperations.CalculateZodiac(zodiac);
 
-            _logger.Log(LogLevel.Information, "Calculated zodiac");
+            _logger.Log(LogLevel.Information, "Calculated zodiac " + zodiacName + '\n');
 
             return Task.FromResult(new ZodiacReply() { ZodiacName =  zodiacName});
         }
